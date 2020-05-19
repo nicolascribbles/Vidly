@@ -1,0 +1,31 @@
+﻿@model Vidly2.ViewModels.RandomMovieViewModel
+
+<div class="container pt-5">
+    @if (Model.Customers.Count == 0)
+    {
+        <text>
+            You don't have any customers!
+        </text>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Customers</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
