@@ -20,3 +20,11 @@ Vidly2/Web.config
 Vidly2/Web.Debug.config
 
 Vidly2/Web.Release.config
+
+Vidly2/App_Data/aspnet-Vidly2-20200410041204.mdf
+
+Vidly2/App_Data/aspnet-Vidly2-20200410041204_log.ldf
+
+Vidly2/bin/Vidly2.dll
+
+Vidly2/bin/Vidly2.pdb
