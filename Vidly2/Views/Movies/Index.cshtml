@@ -1,31 +1,22 @@
-﻿@model Vidly2.ViewModels.RandomMovieViewModel
+﻿@model IEnumerable<Vidly2.Models.Movie>
 
-    <div class="container pt-5">
-        @if (Model.Movies.Count == 0)
-        {
-            <text>
-                You don't have any customers!
-            </text>
-        }
-        else
-        {
-            <table class="table table-bordered table-hover">
-                <thead class="">
+<div class="container pt-5">
+    <h2 class="mb-5">Movies</h2>
+        <table class="table table-bordered table-hover">
+            <thead class="">
+                <tr>
+                    <th>Movies</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model)
+                {
                     <tr>
-                        <th>Movies</th>
+                        <td>
+                            @movie.Name
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var movie in Model.Movies)
-                    {
-                        <tr>
-                            <td>
-                                @movie.Name
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-
-    </div>
+                }
+            </tbody>
+        </table>
+</div>

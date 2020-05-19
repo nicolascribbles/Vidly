@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,8 @@ namespace Vidly2.Models
 {
     public class MembershipType
     {
+        [Required]
+        public string Name { get; set; }
         // In Entity Framework, every entity must have a key, which will be mapped to the primary key of the corresponding table in the database - by convention, we call it ID
         public int Id { get; set; }
 

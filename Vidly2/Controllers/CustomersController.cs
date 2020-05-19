@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 using Vidly2.Models;
 using Vidly2.ViewModels;
@@ -11,6 +12,7 @@ namespace Vidly2.Controllers
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
+
         public CustomersController()
         {
             _context = new ApplicationDbContext();
@@ -21,53 +23,21 @@ namespace Vidly2.Controllers
             _context.Dispose();
         }
 
-
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var customers = new List<Customer>
-            {
-                new Customer { Name = "John Smith",
-                               Id = 1 },
-                new Customer { Name = "Mary Williams",
-                               Id = 2 }
-            };
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
-            var view = new RandomMovieViewModel
-            {
-                Customers = customers
-            };
-
-            return View(view);
+            return View(customers);
         }
-
-
-
 
         public ActionResult Details(int id)
         {
-            var customers = new List<Customer>
-            {
-                new Customer { Name = "John Smith",
-                               Id = 1 },
-                new Customer { Name = "Mary Williams",
-                               Id = 2 }
-            };
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
-            var index = id - 1;
-            var customer = customers[index];
+            if (customer == null)
+                return HttpNotFound();
 
-
-            var view = new CustomerViewModel
-            {
-                Name = customer.Name,
-                Id = customer.Id
-            };
-
-
-            return View(view);
-
+            return View(customer);
         }
-
-
     }
 }
