@@ -20,5 +20,7 @@ namespace Vidly2.Models
 
         public MembershipType MembershipType { get; set; }
         public byte MembershipTypeId { get; set; }
+
+        public Nullable<DateTime> Birthdate { get; set; }
     }
 }
