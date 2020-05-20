@@ -7,13 +7,6 @@ namespace Vidly2.Migrations
     {
         public override void Up()
         {
-            Sql("SET IDENTITY_INSERT MembershipType ON");
-            Sql("INSERT INTO MembershipType(Id, SignUpFee, DurationInMonths, DiscountRate) VALUES (1, 0, 0, 0)");
-            Sql("INSERT INTO MembershipType(Id, SignUpFee, DurationInMonths, DiscountRate) VALUES (2, 30, 1, 10)");
-            Sql("INSERT INTO MembershipType(Id, SignUpFee, DurationInMonths, DiscountRate) VALUES (3, 90, 3, 15)");
-            Sql("INSERT INTO MembershipType(Id, SignUpFee, DurationInMonths, DiscountRate) VALUES (4, 300, 12, 20)");
-
-            Sql("SET IDENTITY_INSERT MembershipType OFF");
         }
         
         public override void Down()
