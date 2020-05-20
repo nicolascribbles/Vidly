@@ -19,6 +19,7 @@ namespace Vidly2.Models
         //because the largest number we want to store is 12 for 12 months
         public byte DurationInMonths { get; set; }
 
+        [Required]
         //because this is going to be a percentage between 0 and 100
         public byte DiscountRate { get; set; }
         
