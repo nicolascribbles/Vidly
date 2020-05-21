@@ -1,0 +1,21 @@
+﻿@model Vidly2.ViewModels.MovieFormViewModel
+
+@{
+    ViewBag.Title = "Movies";
+}
+    <div class="container pt-5">
+        @if (Model.Movies.Id == 0)
+        {
+
+            <h2>New Movie</h2>
+        }
+        else
+        {
+            <h2>Edit Movie </h2>
+        }
+        @using (Html.BeginForm("Save", "Movies"))
+        {
+            
+        }
+
+    </div>
