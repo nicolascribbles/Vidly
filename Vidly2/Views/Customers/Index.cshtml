@@ -1,40 +1,44 @@
 ﻿@model IEnumerable<Vidly2.Models.Customer>
 
-    <div class="container pt-5">
-        <h2 class="mb-5">Customers</h2>
-        @if (!Model.Any())
-        {
-            <text>
-                You don't have any customers!
-            </text>
-        }
-        else
-        {
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>Customers</th>
-                        <th>Membership Type</th>
-                        <th>Discount Rate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var customer in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
-                            </td>
-                            <td>
-                                 @customer.MembershipType.Name
-                            </td>
-                            <td>
-                                 @customer.MembershipType.DiscountRate%
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
+@{
+    ViewBag.Title = "Customers";
+}
 
-    </div>
+<div class="container pt-5">
+    <h2 class="mb-5">Customers</h2>
+    @if (!Model.Any())
+    {
+        <text>
+            You don't have any customers!
+        </text>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Customers</th>
+                    <th>Membership Type</th>
+                    <th>Discount Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(@customer.Name, "Edit", "Customers", new { id = @customer.Id }, null)
+                        </td>
+                        <td>
+                            @customer.MembershipType.Name
+                        </td>
+                        <td>
+                            @customer.MembershipType.DiscountRate%
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
