@@ -62,9 +62,8 @@ namespace Vidly2.Controllers
         {
             if (movie.Id == 0)
             {
-                movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
-
+                movie.DateAdded = DateTime.Now;
             }
             else
             {
@@ -74,6 +73,7 @@ namespace Vidly2.Controllers
                 movieInDb.GenreId = movie.GenreId;
 
             }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Movies");
@@ -89,7 +89,7 @@ namespace Vidly2.Controllers
 
             var viewModel = new MovieFormViewModel
             {
-                Movies = movie,
+                Movie = movie,
                 Genres = _context.Genres.ToList()
             };
             return View("MovieForm", viewModel);
