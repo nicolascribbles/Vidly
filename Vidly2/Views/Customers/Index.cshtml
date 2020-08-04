@@ -1,40 +1,51 @@
 ﻿@model IEnumerable<Vidly2.Models.Customer>
 
-    <div class="container pt-5">
-        <h2 class="mb-5">Customers</h2>
-        @if (!Model.Any())
-        {
-            <text>
-                You don't have any customers!
-            </text>
-        }
-        else
-        {
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>Customers</th>
-                        <th>Membership Type</th>
-                        <th>Discount Rate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var customer in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
-                            </td>
-                            <td>
-                                 @customer.MembershipType.Name
-                            </td>
-                            <td>
-                                 @customer.MembershipType.DiscountRate%
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
+@{
+    ViewBag.Title = "Customers";
+}
 
+<div class="container pt-5">
+    <div class="row">
+        <div class="col">
+            <h2 class="mb-5">Customers</h2>
+        </div>
+        <div class="col">
+            @Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary float-right" })
+        </div>
     </div>
+    @if (!Model.Any())
+    {
+        <text>
+            You don't have any customers!
+        </text>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Customers</th>
+                    <th>Membership Type</th>
+                    <th>Discount Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(@customer.Name, "Edit", "Customers", new { id = @customer.Id }, null)
+                        </td>
+                        <td>
+                            @customer.MembershipType.Name
+                        </td>
+                        <td>
+                            @customer.MembershipType.DiscountRate%
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
